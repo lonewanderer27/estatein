@@ -13,3 +13,4 @@ require_once __DIR__ . '/includes/location.php';
 require_once __DIR__ . '/includes/testimonial.php';
 require_once __DIR__ . '/includes/faq.php';
 require_once __DIR__ . '/includes/value.php';
+require_once __DIR__ . '/includes/contact-settings.php';
