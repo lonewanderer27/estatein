@@ -55,6 +55,12 @@ function register_property_post_type() {
 		'show_in_rest' => true,
 	) );
 
+	register_post_meta( 'property', 'build_year', array(
+		'type'         => 'integer',
+		'single'       => true,
+		'show_in_rest' => true,
+	) );
+
 	register_post_meta( 'property', 'amenities', array(
 		'type'         => 'string',
 		'single'       => true,
@@ -93,10 +99,11 @@ function estatein_render_property_details_meta_box( $post ) {
 	wp_nonce_field( 'estatein_save_property_details', 'estatein_property_details_nonce' );
 
 	$fields = array(
-		'price'     => 'Listing Price',
-		'bedrooms'  => 'Bedrooms',
-		'bathrooms' => 'Bathrooms',
-		'area_sqft' => 'Area (sq ft)',
+		'price'      => 'Listing Price',
+		'bedrooms'   => 'Bedrooms',
+		'bathrooms'  => 'Bathrooms',
+		'area_sqft'  => 'Area (sq ft)',
+		'build_year' => 'Build Year',
 	);
 
 	foreach ( $fields as $key => $label ) {
@@ -129,7 +136,7 @@ function estatein_save_property_details_meta_box( $post_id ) {
 		return;
 	}
 
-	foreach ( array( 'price', 'bedrooms', 'bathrooms', 'area_sqft' ) as $key ) {
+	foreach ( array( 'price', 'bedrooms', 'bathrooms', 'area_sqft', 'build_year' ) as $key ) {
 		if ( isset( $_POST[ 'estatein_property_' . $key ] ) ) {
 			update_post_meta( $post_id, $key, sanitize_text_field( $_POST[ 'estatein_property_' . $key ] ) );
 		}
