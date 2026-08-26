@@ -1,0 +1,61 @@
+/* ---- properties archive: hero search + filters (template-parts/archive-property/hero.php) ---- */
+
+.est-property-search {
+	padding-bottom: 3rem;
+}
+
+.est-property-search-bar .input-group-text {
+	background: var(--est-surface-2);
+	border-color: var(--est-border);
+	color: var(--est-text-muted);
+}
+
+.est-property-search-bar .form-control {
+	background: var(--est-surface-2);
+	border-color: var(--est-border);
+	color: var(--est-text);
+	padding: 0.75rem 1rem;
+}
+
+.est-property-search-bar .form-control::placeholder {
+	color: var(--est-text-muted);
+}
+
+.est-property-search-bar .form-control:focus {
+	background: var(--est-surface-2);
+	border-color: var(--est-primary);
+	box-shadow: 0 0 0 0.2rem rgba(123, 92, 250, 0.25);
+}
+
+.est-property-search-bar .btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+}
+
+.est-filter-select {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.est-filter-select .est-filter-icon {
+	position: absolute;
+	left: 1rem;
+	color: var(--est-text-muted);
+	pointer-events: none;
+	display: inline-flex;
+}
+
+.est-filter-select .form-select {
+	background: var(--est-surface-2);
+	border-color: var(--est-border);
+	color: var(--est-text);
+	padding: 0.7rem 1rem 0.7rem 2.6rem;
+	border-radius: var(--est-radius-sm);
+}
+
+.est-filter-select .form-select:focus {
+	border-color: var(--est-primary);
+	box-shadow: 0 0 0 0.2rem rgba(123, 92, 250, 0.25);
+}
