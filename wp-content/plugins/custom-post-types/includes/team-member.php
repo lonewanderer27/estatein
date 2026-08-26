@@ -25,8 +25,8 @@ function register_team_member_post_type() {
 		'show_in_rest'        => true,
 		'publicly_queryable'  => false,
 		'has_archive'         => false,
-		'hierarchical'        => false,
-		'supports'            => array( 'title', 'thumbnail' ),
+		'hierarchical'        => true,
+		'supports'            => array( 'title', 'thumbnail', 'page-attributes' ),
 		'menu_icon'           => 'dashicons-groups',
 	) );
 
