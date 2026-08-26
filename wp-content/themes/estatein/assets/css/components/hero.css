@@ -65,7 +65,9 @@
 	border-radius: var(--est-radius-lg);
 	background:
 		linear-gradient(160deg, rgba(123, 92, 250, 0.35), rgba(20, 18, 28, 0.1)),
-		repeating-linear-gradient(90deg, #2a2740 0 60px, #201d30 60px 120px);
+		url("../../images/hero.png");
+	background-size: cover;
+	background-position: center;
 	border: 1px solid var(--est-border);
 }
 
