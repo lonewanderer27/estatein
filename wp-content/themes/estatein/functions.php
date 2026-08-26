@@ -48,6 +48,11 @@ function estatein_component_stylesheets() {
 		'carousel',
 		'cta',
 		'footer',
+		'property-gallery',
+		'description-features',
+		'inquire-form',
+		'pricing',
+		'pricing-card',
 	);
 }
 
@@ -157,6 +162,55 @@ function estatein_theme_location_label( $post_id ) {
 }
 
 /**
+ * Property gallery images, sourced from the Gallery block embedded in the
+ * property's content (the property CPT has no dedicated gallery meta field
+ * — see custom-post-types/includes/property.php), falling back to the
+ * featured image when no gallery block is present.
+ */
+function estatein_get_property_gallery_images( $post_id ) {
+	$post = get_post( $post_id );
+
+	if ( ! $post ) {
+		return array();
+	}
+
+	$images = array();
+
+	foreach ( parse_blocks( $post->post_content ) as $block ) {
+		if ( 'core/gallery' !== $block['blockName'] || empty( $block['innerBlocks'] ) ) {
+			continue;
+		}
+
+		foreach ( $block['innerBlocks'] as $inner_block ) {
+			if ( 'core/image' !== $inner_block['blockName'] ) {
+				continue;
+			}
+
+			$attachment_id = isset( $inner_block['attrs']['id'] ) ? (int) $inner_block['attrs']['id'] : 0;
+			$url           = '';
+
+			if ( $attachment_id ) {
+				$url = wp_get_attachment_image_url( $attachment_id, 'large' );
+			} elseif ( isset( $inner_block['attrs']['url'] ) ) {
+				$url = $inner_block['attrs']['url'];
+			}
+
+			if ( $url ) {
+				$images[] = $url;
+			}
+		}
+
+		break;
+	}
+
+	if ( empty( $images ) && has_post_thumbnail( $post_id ) ) {
+		$images[] = get_the_post_thumbnail_url( $post_id, 'large' );
+	}
+
+	return $images;
+}
+
+/**
  * Renders a 1-5 star rating as inline SVG stars.
  */
 function estatein_theme_render_stars( $rating ) {
@@ -225,9 +279,11 @@ function estatein_theme_icon( $name ) {
 		'trend'          => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 4 8-8M14 8h6v6"/></svg>',
 		'gear'           => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 11-4 0v-.09a1.7 1.7 0 00-1-1.55 1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.7 1.7 0 004.6 15a1.7 1.7 0 00-1.55-1H3a2 2 0 110-4h.09A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06A1.7 1.7 0 009 4.6a1.7 1.7 0 001-1.55V3a2 2 0 114 0v.09a1.7 1.7 0 001 1.55 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06A1.7 1.7 0 0019.4 9a1.7 1.7 0 001.55 1H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.55 1z"/></svg>',
 		'sparkle'        => '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg>',
+		'lightning'      => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>',
 		'close'          => '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>',
 		'send'           => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>',
 		'mail'           => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4V4zM4 6l8 7 8-7"/></svg>',
+		'pin'            => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>',
 		'facebook'       => '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.7-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z"/></svg>',
 		'linkedin'       => '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 3H3.6A.6.6 0 003 3.6v16.8a.6.6 0 00.6.6h16.8a.6.6 0 00.6-.6V3.6a.6.6 0 00-.6-.6zM8.3 18.3H5.7V9.9h2.6v8.4zM7 8.8a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm11.3 9.5h-2.6v-4.1c0-1-.4-1.7-1.3-1.7-.7 0-1.1.5-1.3 1-.1.2-.1.5-.1.7v4.1h-2.6s0-6.8 0-7.5h2.6v1.1c.3-.5 1-1.3 2.3-1.3 1.7 0 3 1.1 3 3.4v4.3z"/></svg>',
 		'instagram'      => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>',

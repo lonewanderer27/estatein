@@ -28,5 +28,21 @@
 				counter.textContent = String( index ).padStart( 2, '0' ) + ' of ' + String( total ).padStart( 2, '0' );
 			} );
 		} );
+
+		document.querySelectorAll( '.est-gallery-carousel' ).forEach( function ( carousel ) {
+			var thumbs = carousel.querySelectorAll( '.est-gallery-thumbs button' );
+			var dots = carousel.querySelectorAll( '.est-gallery-dot' );
+
+			carousel.addEventListener( 'slide.bs.carousel', function ( event ) {
+				thumbs.forEach( function ( thumb ) {
+					var slideTo = parseInt( thumb.getAttribute( 'data-bs-slide-to' ), 10 );
+					thumb.classList.toggle( 'active', slideTo === event.to );
+				} );
+
+				dots.forEach( function ( dot, index ) {
+					dot.classList.toggle( 'active', index === event.to );
+				} );
+			} );
+		} );
 	} );
 } )();
