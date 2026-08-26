@@ -134,6 +134,70 @@ function estatein_save_property_type_meta_box( $post_id ) {
 }
 
 /**
+ * Distinct `property_type` values across published properties, for the
+ * archive filter bar and the property-request form's Property Type select.
+ */
+function estatein_get_property_type_options() {
+	global $wpdb;
+
+	$types = $wpdb->get_col(
+		"SELECT DISTINCT pm.meta_value FROM {$wpdb->postmeta} pm
+		INNER JOIN {$wpdb->posts} p ON p.ID = pm.post_id
+		WHERE pm.meta_key = 'property_type'
+		AND pm.meta_value != ''
+		AND p.post_type = 'property'
+		AND p.post_status = 'publish'
+		ORDER BY pm.meta_value ASC"
+	);
+
+	return array_values( array_filter( $types ) );
+}
+
+/**
+ * Bucketed range options for the archive filter bar (Pricing Range,
+ * Property Size, Build Year) and the property-request form's Budget
+ * select, so both draw from the same value/label pairs. Each value is
+ * "min-max"; an empty max means open-ended (e.g. "1000000-" = $1M+).
+ * estatein_parse_filter_range() below turns a value back into numbers.
+ */
+function estatein_property_filter_ranges( $field ) {
+	$ranges = array(
+		'price'      => array(
+			'0-250000'      => 'Under $250,000',
+			'250000-500000' => '$250,000 – $500,000',
+			'500000-1000000' => '$500,000 – $1,000,000',
+			'1000000-'      => '$1,000,000+',
+		),
+		'area_sqft'  => array(
+			'0-1000'    => 'Under 1,000 sqft',
+			'1000-2000' => '1,000 – 2,000 sqft',
+			'2000-3500' => '2,000 – 3,500 sqft',
+			'3500-'     => '3,500+ sqft',
+		),
+		'build_year' => array(
+			'0-2000'    => 'Before 2000',
+			'2000-2010' => '2000 – 2010',
+			'2010-2020' => '2010 – 2020',
+			'2020-'     => '2020 & Newer',
+		),
+	);
+
+	return isset( $ranges[ $field ] ) ? $ranges[ $field ] : array();
+}
+
+/**
+ * Splits a "min-max" range value (from estatein_property_filter_ranges())
+ * into array( $min, $max ) floats, with $max null when open-ended.
+ */
+function estatein_parse_filter_range( $value ) {
+	$parts = explode( '-', (string) $value, 2 );
+	$min   = isset( $parts[0] ) && '' !== $parts[0] ? (float) $parts[0] : 0;
+	$max   = isset( $parts[1] ) && '' !== $parts[1] ? (float) $parts[1] : null;
+
+	return array( $min, $max );
+}
+
+/**
  * Builds a "Country, State" style label from the hierarchical `location`
  * CPT attached via the plugin's estatein_get_location(): parent title first,
  * then the location's own title (e.g. location "California" with parent
