@@ -1,0 +1,55 @@
+/* ---- service item card (template-parts/components/service-item-card.php) ---- */
+
+.est-service-item-card {
+	background: var(--est-surface);
+	border: 1px solid var(--est-border);
+	border-radius: var(--est-radius-md);
+	padding: 1.5rem;
+}
+
+.est-service-item-icon-rings {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	border: 1px solid rgba(123, 92, 250, 0.18);
+	margin-bottom: 1rem;
+}
+
+.est-service-item-icon-rings::before {
+	content: "";
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	border: 1px solid rgba(123, 92, 250, 0.3);
+}
+
+.est-service-item-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background: rgba(123, 92, 250, 0.14);
+	color: var(--est-primary);
+	position: relative;
+	z-index: 1;
+}
+
+.est-service-item-title {
+	font-weight: 700;
+	font-size: 1rem;
+	margin-bottom: 0.5rem;
+}
+
+.est-service-item-description {
+	color: var(--est-text-muted);
+	font-size: 0.9rem;
+}

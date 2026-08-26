@@ -1,0 +1,21 @@
+/* ---- service featured card (template-parts/components/service-featured-card.php) ---- */
+
+.est-service-featured-card {
+	background: var(--est-surface-2);
+	border: 1px solid var(--est-border);
+	border-radius: var(--est-radius-md);
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.est-service-featured-title {
+	font-weight: 700;
+	font-size: 1.05rem;
+}
+
+.est-service-featured-description {
+	color: var(--est-text-muted);
+	font-size: 0.9rem;
+}
