@@ -1,0 +1,111 @@
+/* ---- footer (footer.php) ---- */
+
+.est-footer {
+	background: var(--est-bg);
+	padding: 4rem 0 1.75rem;
+}
+
+.est-brand-footer {
+	margin-bottom: 1.5rem;
+}
+
+.est-newsletter {
+	position: relative;
+	max-width: 260px;
+}
+
+.est-newsletter-icon {
+	position: absolute;
+	left: 0.9rem;
+	top: 50%;
+	transform: translateY(-50%);
+	color: var(--est-text-muted);
+	pointer-events: none;
+}
+
+.est-newsletter-input {
+	background: var(--est-surface);
+	border: 1px solid var(--est-border);
+	color: var(--est-text);
+	border-radius: var(--est-radius-sm);
+	padding-left: 2.4rem;
+	padding-right: 2.6rem;
+}
+
+.est-newsletter-input:focus {
+	background: var(--est-surface);
+	color: var(--est-text);
+	border-color: var(--est-primary);
+	box-shadow: 0 0 0 0.2rem rgba(123, 92, 250, 0.25);
+}
+
+.est-newsletter-input::placeholder {
+	color: var(--est-text-muted);
+}
+
+.est-newsletter-submit {
+	position: absolute;
+	right: 0.4rem;
+	top: 50%;
+	transform: translateY(-50%);
+	background: var(--est-primary);
+	border: 0;
+	border-radius: 8px;
+	width: 30px;
+	height: 30px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+}
+
+.est-footer-heading {
+	font-weight: 600;
+	font-size: 0.9rem;
+	margin-bottom: 1rem;
+}
+
+.est-footer-links {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+}
+
+.est-footer-links a {
+	color: var(--est-text-muted);
+	font-size: 0.88rem;
+	text-decoration: none;
+}
+
+.est-footer-links a:hover {
+	color: var(--est-text);
+}
+
+.est-footer-divider {
+	border-color: var(--est-border);
+	margin: 2.5rem 0 1.5rem;
+	opacity: 1;
+}
+
+.est-footer-copy {
+	color: var(--est-text-muted);
+}
+
+.est-social-link {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	border: 1px solid var(--est-border-strong);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--est-text);
+}
+
+.est-social-link:hover {
+	background: rgba(255, 255, 255, 0.06);
+	color: var(--est-text);
+}

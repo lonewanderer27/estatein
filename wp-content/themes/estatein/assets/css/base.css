@@ -1,0 +1,127 @@
+/* ==========================================================================
+   Estatein — dark/violet skin layered on top of Bootstrap 5.3.8.
+   Loaded after bootstrap.min.css, so these overrides win the cascade.
+
+   Design tokens, body defaults, and chrome shared by more than one
+   component (buttons, the section header pattern). Component-specific
+   rules live in assets/css/components/.
+   ========================================================================== */
+
+:root,
+[data-bs-theme="dark"] {
+	--est-bg: #08070c;
+	--est-bg-elevated: #14121c;
+	--est-surface: #17151f;
+	--est-surface-2: #1c1a28;
+	--est-border: rgba(255, 255, 255, 0.08);
+	--est-border-strong: rgba(255, 255, 255, 0.14);
+	--est-text: #ffffff;
+	--est-text-muted: #a29dbd;
+	--est-primary: #7b5cfa;
+	--est-primary-hover: #6a49f0;
+	--est-primary-active: #5c3ce0;
+	--est-star: #fbbf24;
+	--est-radius-lg: 20px;
+	--est-radius-md: 16px;
+	--est-radius-sm: 10px;
+
+	--bs-body-bg: var(--est-bg);
+	--bs-body-color: var(--est-text);
+	--bs-border-color: var(--est-border);
+	--bs-secondary-color: var(--est-text-muted);
+	--bs-link-color: var(--est-primary);
+	--bs-link-hover-color: var(--est-primary-hover);
+	--bs-primary: var(--est-primary);
+	--bs-primary-rgb: 123, 92, 250;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	background-color: var(--est-bg);
+	overflow-x: hidden;
+}
+
+a {
+	transition: color 0.15s ease;
+}
+
+/* ---- shared buttons ---- */
+
+.btn {
+	--bs-btn-border-radius: var(--est-radius-sm);
+	--bs-btn-padding-x: 1.5rem;
+	--bs-btn-padding-y: 0.65rem;
+	font-weight: 600;
+	font-size: 0.9rem;
+}
+
+.est-btn-primary,
+.btn-primary {
+	--bs-btn-bg: var(--est-primary);
+	--bs-btn-border-color: var(--est-primary);
+	--bs-btn-hover-bg: var(--est-primary-hover);
+	--bs-btn-hover-border-color: var(--est-primary-hover);
+	--bs-btn-active-bg: var(--est-primary-active);
+	--bs-btn-active-border-color: var(--est-primary-active);
+	--bs-btn-disabled-bg: var(--est-primary);
+	--bs-btn-disabled-border-color: var(--est-primary);
+	--bs-btn-focus-shadow-rgb: 123, 92, 250;
+	--bs-btn-color: #ffffff;
+	--bs-btn-hover-color: #ffffff;
+	--bs-btn-active-color: #ffffff;
+}
+
+.est-btn-outline {
+	--bs-btn-color: var(--est-text);
+	--bs-btn-border-color: var(--est-border-strong);
+	--bs-btn-bg: transparent;
+	--bs-btn-hover-color: var(--est-text);
+	--bs-btn-hover-bg: rgba(255, 255, 255, 0.06);
+	--bs-btn-hover-border-color: var(--est-border-strong);
+	--bs-btn-active-bg: rgba(255, 255, 255, 0.1);
+	--bs-btn-active-color: var(--est-text);
+}
+
+.est-btn-sm {
+	--bs-btn-padding-x: 1.1rem;
+	--bs-btn-padding-y: 0.45rem;
+	font-size: 0.82rem;
+}
+
+/* ---- shared section chrome (heading pattern reused by every front-page section) ---- */
+
+.est-section {
+	padding: 5rem 0;
+}
+
+.est-section-alt {
+	background: var(--est-bg-elevated);
+}
+
+.est-eyebrow {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	color: var(--est-primary);
+	margin-bottom: 0.75rem;
+}
+
+.est-eyebrow-dot {
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background: var(--est-text-muted);
+	display: inline-block;
+}
+
+.est-section-title {
+	font-weight: 700;
+	font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+	margin-bottom: 0.75rem;
+}
+
+.est-section-subtitle {
+	color: var(--est-text-muted);
+	max-width: 46rem;
+	margin-bottom: 0;
+}

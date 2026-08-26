@@ -1,0 +1,87 @@
+/* ---- property cards (template-parts/components/property-card.php) ---- */
+
+.est-property-card {
+	background: var(--est-surface);
+	border: 1px solid var(--est-border);
+	border-radius: var(--est-radius-md);
+	overflow: hidden;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.est-property-media {
+	display: block;
+	aspect-ratio: 4 / 3;
+	overflow: hidden;
+}
+
+.est-property-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.est-property-img-placeholder {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(160deg, #2a2740, #17151f);
+	color: var(--est-text-muted);
+}
+
+.est-property-body {
+	padding: 1.25rem;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.est-property-title {
+	font-size: 1.05rem;
+	font-weight: 700;
+	margin-bottom: 0.5rem;
+}
+
+.est-property-title a {
+	color: var(--est-text);
+}
+
+.est-property-excerpt {
+	color: var(--est-text-muted);
+	font-size: 0.88rem;
+	margin-bottom: 1rem;
+}
+
+.est-property-readmore {
+	color: var(--est-primary);
+	white-space: nowrap;
+	margin-left: 0.25rem;
+}
+
+.est-property-meta li {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid var(--est-border);
+	border-radius: 999px;
+	padding: 0.25rem 0.65rem;
+	font-size: 0.78rem;
+	color: var(--est-text-muted);
+}
+
+.est-property-body > .d-flex {
+	margin-top: auto;
+}
+
+.est-property-price-label {
+	color: var(--est-text-muted);
+	font-size: 0.75rem;
+}
+
+.est-property-price {
+	font-weight: 700;
+	font-size: 1.05rem;
+}

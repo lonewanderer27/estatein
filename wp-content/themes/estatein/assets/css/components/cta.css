@@ -1,0 +1,17 @@
+/* ---- CTA (template-parts/front-page/cta.php) ---- */
+
+.est-cta {
+	background: var(--est-bg-elevated);
+	border-top: 1px solid var(--est-border);
+	padding: 4rem 0;
+}
+
+.est-cta-title {
+	font-weight: 700;
+	font-size: clamp(1.6rem, 2.2vw, 2rem);
+	margin-bottom: 0.75rem;
+}
+
+.est-cta-subtitle {
+	color: var(--est-text-muted);
+}

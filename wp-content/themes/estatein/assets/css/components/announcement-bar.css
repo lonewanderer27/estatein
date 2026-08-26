@@ -1,0 +1,41 @@
+/* ---- announcement bar (template-parts/components/announcement-bar.php) ---- */
+
+.est-announcement {
+	background: var(--est-primary);
+	color: #fff;
+	padding: 0.55rem 0;
+	font-weight: 500;
+}
+
+.est-announcement svg {
+	vertical-align: -2px;
+	margin-right: 0.35rem;
+}
+
+.est-announcement-link {
+	color: #fff;
+	text-decoration: underline;
+	margin-left: 0.4rem;
+	white-space: nowrap;
+}
+
+.est-announcement-close {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	background: none;
+	border: 0;
+	color: #fff;
+	opacity: 0.8;
+	line-height: 0;
+	padding: 0.25rem;
+}
+
+.est-announcement-close:hover {
+	opacity: 1;
+}
+
+.est-announcement.est-is-hidden {
+	display: none;
+}

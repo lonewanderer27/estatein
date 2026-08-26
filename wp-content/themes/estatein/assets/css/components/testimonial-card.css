@@ -1,0 +1,53 @@
+/* ---- testimonial cards (template-parts/components/testimonial-card.php) ---- */
+
+.est-testimonial-card {
+	background: var(--est-surface);
+	border: 1px solid var(--est-border);
+	border-radius: var(--est-radius-md);
+	padding: 1.5rem;
+	height: 100%;
+}
+
+.est-stars {
+	display: inline-flex;
+	gap: 0.15rem;
+	color: var(--est-star);
+	margin-bottom: 1rem;
+}
+
+.est-testimonial-title {
+	font-size: 1.05rem;
+	font-weight: 700;
+	margin-bottom: 0.5rem;
+}
+
+.est-testimonial-quote {
+	color: var(--est-text-muted);
+	font-size: 0.9rem;
+	margin-bottom: 1.25rem;
+}
+
+.est-testimonial-avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.est-testimonial-avatar-fallback {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(123, 92, 250, 0.18);
+	color: var(--est-primary);
+	font-weight: 700;
+}
+
+.est-testimonial-name {
+	font-weight: 600;
+	font-size: 0.9rem;
+}
+
+.est-testimonial-location {
+	color: var(--est-text-muted);
+}
