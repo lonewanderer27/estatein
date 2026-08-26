@@ -1,10 +1,15 @@
 /* ---- announcement bar (template-parts/components/announcement-bar.php) ---- */
 
 .est-announcement {
-	background: var(--est-primary);
+	background-color: #2c2c30;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='60' viewBox='0 0 240 60'%3E%3Cpath d='M0 30 Q 30 5 60 30 T 120 30 T 180 30 T 240 30' fill='none' stroke='rgba(255,255,255,0.14)' stroke-width='1.5'/%3E%3Cpath d='M0 42 Q 30 17 60 42 T 120 42 T 180 42 T 240 42' fill='none' stroke='rgba(255,255,255,0.09)' stroke-width='1.5'/%3E%3Cpath d='M0 18 Q 30 -7 60 18 T 120 18 T 180 18 T 240 18' fill='none' stroke='rgba(255,255,255,0.09)' stroke-width='1.5'/%3E%3C/svg%3E");
+	background-repeat: repeat-x;
+	background-size: 240px 60px;
+	background-position: center;
 	color: #fff;
 	padding: 0.55rem 0;
 	font-weight: 500;
+	overflow: hidden;
 }
 
 .est-announcement svg {
