@@ -39,6 +39,72 @@
 	resize: vertical;
 }
 
+.est-inquire-form .form-select {
+	background: var(--est-surface-2);
+	border-color: var(--est-border);
+	border-radius: 6px;
+	color: var(--est-text);
+	padding: 0.75rem 1rem;
+	font-size: 0.95rem;
+}
+
+.est-inquire-form .form-select:focus {
+	background: var(--est-surface-2);
+	border-color: var(--est-primary);
+	color: var(--est-text);
+	box-shadow: 0 0 0 0.2rem rgba(123, 92, 250, 0.25);
+}
+
+/* ---- preferred contact method pills (template-parts/archive-property/request.php) ---- */
+
+.est-contact-method-pill {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	width: 100%;
+	background: var(--est-surface-2);
+	border: 1px solid var(--est-border);
+	border-radius: 6px;
+	padding: 0.75rem 1rem;
+	cursor: pointer;
+	margin-bottom: 0;
+}
+
+.est-contact-method-pill input[type="radio"] {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.est-contact-method-pill .est-contact-method-icon {
+	color: var(--est-text-muted);
+	display: inline-flex;
+	flex-shrink: 0;
+}
+
+.est-contact-method-pill .est-contact-method-text {
+	color: var(--est-text-muted);
+	font-size: 0.95rem;
+	flex-grow: 1;
+}
+
+.est-contact-method-pill .est-contact-method-dot {
+	width: 0.9rem;
+	height: 0.9rem;
+	border-radius: 50%;
+	border: 1px solid var(--est-border-strong);
+	flex-shrink: 0;
+}
+
+.est-contact-method-pill input[type="radio"]:checked ~ .est-contact-method-dot {
+	background: var(--est-primary);
+	border-color: var(--est-primary);
+}
+
+.est-contact-method-pill:has(input[type="radio"]:checked) {
+	border-color: var(--est-primary);
+}
+
 .est-selected-property {
 	background: var(--est-surface-2);
 	border: 1px solid var(--est-border);
