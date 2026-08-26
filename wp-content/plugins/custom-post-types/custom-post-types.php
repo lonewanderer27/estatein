@@ -11,3 +11,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once __DIR__ . '/includes/location.php';
 require_once __DIR__ . '/includes/testimonial.php';
+require_once __DIR__ . '/includes/faq.php';
