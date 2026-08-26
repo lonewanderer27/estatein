@@ -1,0 +1,30 @@
+# WordPress core (reproducible via `wp core download`)
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/xmlrpc.php
+/index.php
+/license.txt
+/readme.html
+
+# Config (has secrets — commit wp-config-sample.php instead)
+/wp-config.php
+
+# Uploads / user content
+/wp-content/uploads/
+
+# Default bundled themes/plugins (redownloadable, not custom work)
+/wp-content/themes/twentytwentythree/
+/wp-content/themes/twentytwentyfour/
+/wp-content/themes/twentytwentyfive/
+/wp-content/plugins/akismet/
+/wp-content/plugins/hello.php
+
+# Cache / logs
+/wp-content/cache/
+/wp-content/upgrade/
+*.log
+
+# DDEV
+/.ddev/db_snapshots/
+/.ddev/.global_commands/
