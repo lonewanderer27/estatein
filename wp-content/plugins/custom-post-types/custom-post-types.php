@@ -18,3 +18,4 @@ require_once __DIR__ . '/includes/property.php';
 require_once __DIR__ . '/includes/team-member.php';
 require_once __DIR__ . '/includes/highlight.php';
 require_once __DIR__ . '/includes/inquiry.php';
+require_once __DIR__ . '/includes/property-request.php';
