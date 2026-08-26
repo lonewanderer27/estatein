@@ -3,8 +3,9 @@
  * One "service category" section (Property Selling / Property Management /
  * Investment Advisory), reused across the services page. Expects $args:
  * id, title, subtitle, items (4x ['icon', 'title', 'description']),
- * featured (['title', 'description', 'learn_more_url'?]) — 3 item cards,
- * a 4th item, then a wide featured card.
+ * featured (['title', 'description', 'learn_more_url'?]), and variant
+ * ('grid-end' default — 3 item cards + a 4th item + a wide featured card;
+ * 'grid-start' — a tall featured card first, then a 2x2 grid of items).
  *
  * TODO: replace $args['items']/$args['featured'] with a query against a
  * `service`/`service-category` CPT once the plugin adds one — for now the
@@ -20,6 +21,7 @@ $estatein_title    = $args['title'];
 $estatein_subtitle = $args['subtitle'];
 $estatein_items    = $args['items'];
 $estatein_featured = $args['featured'];
+$estatein_variant  = isset( $args['variant'] ) ? $args['variant'] : 'grid-end';
 ?>
 <section class="est-section" id="<?php echo esc_attr( $estatein_id ); ?>">
 	<div class="container">
@@ -27,17 +29,34 @@ $estatein_featured = $args['featured'];
 		<h2 class="est-section-title"><?php echo esc_html( $estatein_title ); ?></h2>
 		<p class="est-section-subtitle mb-4 mb-lg-5"><?php echo esc_html( $estatein_subtitle ); ?></p>
 
-		<div class="row g-3 g-lg-4">
-			<?php foreach ( $estatein_items as $estatein_index => $estatein_item ) : ?>
+		<?php if ( 'grid-start' === $estatein_variant ) : ?>
+			<div class="row g-3 g-lg-4">
 				<div class="col-12 col-lg-4">
-					<?php get_template_part( 'template-parts/components/service-item-card', null, $estatein_item ); ?>
+					<?php get_template_part( 'template-parts/components/service-featured-card', null, $estatein_featured ); ?>
 				</div>
-				<?php if ( 3 === $estatein_index ) : ?>
-					<div class="col-12 col-lg-8">
-						<?php get_template_part( 'template-parts/components/service-featured-card', null, $estatein_featured ); ?>
+				<div class="col-12 col-lg-8">
+					<div class="row g-3 g-lg-4">
+						<?php foreach ( $estatein_items as $estatein_item ) : ?>
+							<div class="col-12 col-lg-6">
+								<?php get_template_part( 'template-parts/components/service-item-card', null, $estatein_item ); ?>
+							</div>
+						<?php endforeach; ?>
 					</div>
-				<?php endif; ?>
-			<?php endforeach; ?>
-		</div>
+				</div>
+			</div>
+		<?php else : ?>
+			<div class="row g-3 g-lg-4">
+				<?php foreach ( $estatein_items as $estatein_index => $estatein_item ) : ?>
+					<div class="col-12 col-lg-4">
+						<?php get_template_part( 'template-parts/components/service-item-card', null, $estatein_item ); ?>
+					</div>
+					<?php if ( 3 === $estatein_index ) : ?>
+						<div class="col-12 col-lg-8">
+							<?php get_template_part( 'template-parts/components/service-featured-card', null, $estatein_featured ); ?>
+						</div>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
 	</div>
 </section>
