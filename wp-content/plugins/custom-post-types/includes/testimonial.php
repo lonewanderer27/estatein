@@ -21,14 +21,14 @@ function register_testimonial_post_type() {
 			'all_items'     => 'All Testimonials',
 			'search_items'  => 'Search Testimonials',
 		),
-		'public'              => false,
+		'public'              => true,
 		'show_ui'             => true,
 		'show_in_menu'        => true,
 		'show_in_rest'        => true,
-		'publicly_queryable'  => false,
+		'publicly_queryable'  => true,
 		'has_archive'         => false,
 		'hierarchical'        => false,
-		'supports'            => array( 'title', 'editor', 'thumbnail' ),
+		'supports'            => array( 'title', 'editor', 'thumbnail', 'slug' ),
 		'menu_icon'           => 'dashicons-testimonial',
 	) );
 
