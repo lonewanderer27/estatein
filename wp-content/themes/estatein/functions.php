@@ -317,7 +317,7 @@ function estatein_default_primary_menu() {
 		'Home'       => home_url( '/' ),
 		'About Us'   => '#',
 		'Properties' => get_post_type_archive_link( 'property' ) ?: '#',
-		'Services'   => '#',
+		'Services'   => home_url( '/services/' ),
 	);
 	?>
 	<ul id="estNavbar" class="navbar-nav mx-lg-auto">
