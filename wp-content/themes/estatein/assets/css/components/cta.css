@@ -1,9 +1,43 @@
 /* ---- CTA (template-parts/front-page/cta.php) ---- */
 
 .est-cta {
+	position: relative;
 	background: var(--est-bg-elevated);
 	border-top: 1px solid var(--est-border);
 	padding: 4rem 0;
+	overflow: hidden;
+}
+
+.est-cta::before,
+.est-cta::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 640px;
+	max-width: 45%;
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+	opacity: 0.6;
+	pointer-events: none;
+	z-index: 0;
+}
+
+.est-cta::before {
+	left: 0;
+	background-image: url("../../images/abstract-design-left.png");
+	background-position: left center;
+}
+
+.est-cta::after {
+	right: 0;
+	background-image: url("../../images/abstract-design-right.png");
+	background-position: right center;
+}
+
+.est-cta .container {
+	position: relative;
+	z-index: 1;
 }
 
 .est-cta-title {
