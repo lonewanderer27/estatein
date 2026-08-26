@@ -1,0 +1,13 @@
+<?php
+/**
+ * Plugin Name: Custom Post Types
+ * Description: Registers custom post types for this site.
+ * Version: 1.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+require_once __DIR__ . '/includes/location.php';
+require_once __DIR__ . '/includes/testimonial.php';

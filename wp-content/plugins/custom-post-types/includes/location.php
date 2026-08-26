@@ -1,19 +1,14 @@
 <?php
 /**
- * Plugin Name: Custom Post Types
- * Description: Registers custom post types for this site.
- * Version: 1.0
+ * Location CPT: a shared, hierarchical reference (Country > State > City)
+ * that other post types (e.g. property, testimonial) attach to via
+ * estatein_register_location_field() instead of storing free-text locations.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * Location CPT: a shared, hierarchical reference (Country > State > City)
- * that other post types (e.g. property, testimonial) attach to via
- * estatein_register_location_field() instead of storing free-text locations.
- */
 function register_location_post_type() {
 	register_post_type( 'location', array(
 		'label'               => 'Locations',
