@@ -70,6 +70,12 @@ function register_testimonial_post_type() {
 		'single'       => true,
 		'show_in_rest' => true,
 	) );
+
+	register_post_meta( 'testimonial', 'contact_person', array(
+		'type'         => 'string',
+		'single'       => true,
+		'show_in_rest' => true,
+	) );
 }
 add_action( 'init', 'register_testimonial_post_type' );
 
@@ -166,11 +172,12 @@ function estatein_render_testimonial_client_meta_box( $post ) {
 	wp_nonce_field( 'estatein_save_testimonial_client', 'estatein_testimonial_client_nonce' );
 
 	$fields = array(
-		'company'      => 'Company',
-		'domain'       => 'Domain',
-		'category'     => 'Category',
-		'website'      => 'Website (optional)',
-		'client_since' => 'Client Since',
+		'company'        => 'Company',
+		'contact_person' => 'Contact Person Name',
+		'domain'         => 'Domain',
+		'category'       => 'Category',
+		'website'        => 'Website (optional)',
+		'client_since'   => 'Client Since',
 	);
 	?>
 	<table class="form-table">
@@ -208,6 +215,10 @@ function estatein_save_testimonial_client_meta_box( $post_id ) {
 
 	if ( isset( $_POST['estatein_testimonial_company'] ) ) {
 		update_post_meta( $post_id, 'company', sanitize_text_field( $_POST['estatein_testimonial_company'] ) );
+	}
+
+	if ( isset( $_POST['estatein_testimonial_contact_person'] ) ) {
+		update_post_meta( $post_id, 'contact_person', sanitize_text_field( $_POST['estatein_testimonial_contact_person'] ) );
 	}
 
 	if ( isset( $_POST['estatein_testimonial_domain'] ) ) {
