@@ -15,3 +15,4 @@ require_once __DIR__ . '/includes/faq.php';
 require_once __DIR__ . '/includes/value.php';
 require_once __DIR__ . '/includes/contact-settings.php';
 require_once __DIR__ . '/includes/property.php';
+require_once __DIR__ . '/includes/team-member.php';
