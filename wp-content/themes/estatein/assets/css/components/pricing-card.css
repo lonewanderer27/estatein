@@ -1,0 +1,46 @@
+/* ---- pricing breakdown card (template-parts/components/pricing-card.php) ---- */
+
+.est-pricing-card {
+	border: 1px solid var(--est-border);
+	border-radius: var(--est-radius-md);
+	padding: 1.5rem;
+}
+
+.est-pricing-card-title {
+	font-weight: 700;
+	font-size: 1.05rem;
+}
+
+.est-pricing-row-label {
+	color: var(--est-text-muted);
+	font-size: 0.82rem;
+}
+
+.est-pricing-row-value {
+	font-weight: 700;
+}
+
+.est-pricing-row-badge {
+	background: var(--est-surface-2);
+	color: var(--est-text-muted);
+	border-radius: 999px;
+	padding: 0.25rem 0.75rem;
+	font-size: 0.78rem;
+}
+
+.est-pricing-row-group {
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+}
+
+.est-pricing-row-group:first-child {
+	padding-top: 0;
+}
+
+.est-pricing-row-group:last-child {
+	padding-bottom: 0;
+}
+
+.est-pricing-row-group-divider {
+	border-top: 1px solid var(--est-border);
+}

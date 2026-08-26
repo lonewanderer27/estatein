@@ -1,0 +1,23 @@
+/* ---- pricing details section (template-parts/single-property/pricing.php) ---- */
+
+.est-pricing-note {
+	border: 1px solid var(--est-border);
+	border-radius: var(--est-radius-md);
+	padding: 1.25rem 1.5rem;
+	color: var(--est-text-muted);
+}
+
+.est-pricing-note-badge {
+	flex-shrink: 0;
+	background: var(--est-surface-2);
+	border-radius: var(--est-radius-sm);
+	padding: 0.25rem 0.75rem;
+	font-size: 0.78rem;
+	font-weight: 600;
+	color: var(--est-text);
+}
+
+.est-pricing-listing-price {
+	font-weight: 700;
+	font-size: 1.75rem;
+}

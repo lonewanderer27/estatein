@@ -1,0 +1,89 @@
+/* ---- inquire form (template-parts/single-property/inquire.php) ---- */
+
+.est-inquire-form {
+	background: transparent;
+	border: 1px solid var(--est-border);
+	border-radius: var(--est-radius-lg);
+	padding: 2.5rem;
+}
+
+.est-inquire-form .form-label {
+	color: var(--est-text);
+	font-size: 0.9rem;
+	font-weight: 500;
+	margin-bottom: 0.6rem;
+}
+
+.est-inquire-form .form-control {
+	background: var(--est-surface-2);
+	border-color: var(--est-border);
+	border-radius: 6px;
+	color: var(--est-text);
+	padding: 0.75rem 1rem;
+	font-size: 0.95rem;
+}
+
+.est-inquire-form .form-control::placeholder {
+	color: var(--est-text-muted);
+}
+
+.est-inquire-form .form-control:focus {
+	background: var(--est-surface-2);
+	border-color: var(--est-primary);
+	color: var(--est-text);
+	box-shadow: 0 0 0 0.2rem rgba(123, 92, 250, 0.25);
+}
+
+.est-inquire-form textarea.form-control {
+	min-height: 8rem;
+	resize: vertical;
+}
+
+.est-selected-property {
+	background: var(--est-surface-2);
+	border: 1px solid var(--est-border);
+	border-radius: 6px;
+	padding: 0.75rem 1rem;
+	min-height: calc(1.5em + 1.5rem + 2px);
+	color: var(--est-text-muted);
+	font-size: 0.95rem;
+}
+
+.est-selected-property svg {
+	color: var(--est-text-muted);
+	flex-shrink: 0;
+}
+
+.est-inquire-form .form-check {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	padding-left: 0;
+}
+
+.est-inquire-form .form-check-input {
+	background-color: var(--est-surface-2);
+	border-color: var(--est-border-strong);
+	border-radius: 4px;
+	width: 1.1rem;
+	height: 1.1rem;
+	margin-top: 0;
+	margin-left: 0;
+	flex-shrink: 0;
+}
+
+.est-inquire-form .form-check-input:checked {
+	background-color: var(--est-primary);
+	border-color: var(--est-primary);
+}
+
+.est-inquire-form .form-check-label {
+	color: var(--est-text-muted);
+	line-height: 1.1rem;
+	margin-bottom: 0;
+}
+
+.est-inquire-form .form-check-label a {
+	color: var(--est-text);
+	text-decoration: underline;
+}
