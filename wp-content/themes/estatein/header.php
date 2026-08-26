@@ -26,8 +26,7 @@ $estatein_contact_email = ! empty( $estatein_contact['email'] ) ? $estatein_cont
 	<nav class="navbar navbar-expand-lg" data-bs-theme="dark">
 		<div class="container">
 			<a class="navbar-brand est-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-				<span class="est-brand-mark" aria-hidden="true"></span>
-				<?php bloginfo( 'name' ); ?>
+				<?php estatein_site_brand(); ?>
 			</a>
 
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#estNavbar" aria-controls="estNavbar" aria-expanded="false" aria-label="Toggle navigation">

@@ -32,6 +32,37 @@ function estatein_setup() {
 add_action( 'after_setup_theme', 'estatein_setup' );
 
 /**
+ * Site brand mark shared by the navbar and footer: the uploaded custom logo
+ * (Appearance > Customize > Site Identity) when one is set, else the Site
+ * Icon (Settings > General), else the theme's placeholder mark. Echoes
+ * directly, like estatein_theme_icon().
+ */
+function estatein_site_brand() {
+	$estatein_logo_id = get_theme_mod( 'custom_logo' );
+
+	if ( $estatein_logo_id && has_custom_logo() ) {
+		echo wp_get_attachment_image( $estatein_logo_id, 'full', false, array(
+			'class' => 'est-brand-logo',
+			'alt'   => get_bloginfo( 'name' ),
+		) );
+		return;
+	}
+
+	if ( has_site_icon() ) {
+		printf(
+			'<img class="est-brand-icon" src="%s" alt="%s" width="32" height="32">',
+			esc_url( get_site_icon_url( 64 ) ),
+			esc_attr( get_bloginfo( 'name' ) )
+		);
+		bloginfo( 'name' );
+		return;
+	}
+
+	echo '<span class="est-brand-mark" aria-hidden="true"></span>';
+	bloginfo( 'name' );
+}
+
+/**
  * Component stylesheets, one per template-parts/components or
  * template-parts/front-page file, loaded after base.css (tokens, body
  * defaults, and the shared section-header/button chrome).

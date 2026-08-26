@@ -19,8 +19,7 @@ $estatein_socials  = array_filter( array(
 		<div class="row gy-4">
 			<div class="col-lg-3">
 				<a class="est-brand est-brand-footer d-inline-flex" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<span class="est-brand-mark" aria-hidden="true"></span>
-					<?php bloginfo( 'name' ); ?>
+					<?php estatein_site_brand(); ?>
 				</a>
 				<form class="est-newsletter" action="#" method="post">
 					<label for="estNewsletterEmail" class="visually-hidden">Email address</label>

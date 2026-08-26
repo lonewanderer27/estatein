@@ -27,6 +27,18 @@
 	display: inline-block;
 }
 
+.est-brand-logo {
+	max-height: 40px;
+	width: auto;
+}
+
+.est-brand-icon {
+	width: 26px;
+	height: 26px;
+	border-radius: 8px 8px 8px 2px;
+	object-fit: cover;
+}
+
 .navbar .nav-link {
 	color: var(--est-text-muted);
 	font-weight: 500;
